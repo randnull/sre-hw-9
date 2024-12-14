@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus-alert-rules
+data:
+  node-alert.yml: |
+    groups:
+    - name: oncall-alerts
+      rules:
+      - alert: HiAnswerTime
+        expr: avg_over_time(prober_get_search_info_duration_seconds[10s]) > 0.001
+        for: 10s
+        labels:
+          severity: warning
+        annotations:
+          summary: "Долгое время ответа поиска"
+          description: "Время ответа поиска > 0.001s"
+      - alert: SearchNotAvailable
+        expr: avg_over_time(prober_get_search_info_fail_total[10s]) > 1
+        for: 10s
+        labels:
+          severity: critical
+        annotations:
+          summary: "Поиск не доступен"
+          description: "Запрос на поиск не доступен"
+    - name: node-export-alerts
+      rules:
+      - alert: CPUAlert
+        expr: avg(rate(node_cpu_seconds_total[30s])) > 0.10
+        for: 10s
+        labels:
+          severity: critical
+        annotations:
+          summary: "Загрузка процессоров > 10%"
+          description: "Загрузка процессоров > 10%"
