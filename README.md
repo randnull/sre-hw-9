@@ -1,6 +1,6 @@
 # Задание 1
 
-Правила алертом и настройки prometheus, alermanager находятся в папках alermanager/prometheus
+Правила алертов и настройки prometheus, alermanager находятся в папках alermanager/prometheus
 
 Установим alertmanager и добавим правила в прометуес:
 
