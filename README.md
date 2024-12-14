@@ -4,6 +4,8 @@
 
 Установим alertmanager и добавим правила в прометуес:
 
+![Иллюстрация к проекту](https://github.com/randnull/sre-hw-9/blob/main/pods.png)
+
 ![Иллюстрация к проекту](https://github.com/randnull/sre-hw-9/blob/main/photos/prom1.png)
 
 Демострация получения алерта в alertmanager:
